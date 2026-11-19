@@ -77,6 +77,24 @@
       "publicationDateCheckedAt": "2026-11-17"
     },
     {
+      "id": "thesis-ookla2026spain",
+      "title": "Trial by Fire: Spain's Record Wildfires Put Satellite D2D to Work",
+      "url": "https://www.ookla.com/articles/spain-starlink-d2d",
+      "publishedAt": "2026-08-31",
+      "datePrecision": "day",
+      "type": "research",
+      "summary": "Uses crowdsourced measurements to examine Starlink D2D emergency connectivity during Spain's wildfires, tracing changes in satellite activity where terrestrial coverage weakened.",
+      "source": "Ookla Research · Research report",
+      "topic": "Emergency connectivity",
+      "countryIds": [],
+      "operatorTags": [],
+      "thesisReference": "ookla2026spain",
+      "featuredRank": 10,
+      "publicationDateBasis": "article",
+      "publicationDateSource": "https://www.ookla.com/articles/spain-starlink-d2d",
+      "publicationDateCheckedAt": "2026-11-19"
+    },
+    {
       "id": "thesis-shi2026lpg",
       "title": "LPG: Raise Your Location Privacy Game in Direct-to-Cell LEO Satellite Networks",
       "url": "https://www.usenix.org/conference/usenixsecurity26/presentation/shi-quan",
@@ -92,24 +110,6 @@
       "featuredRank": 9,
       "publicationDateBasis": "proceedings-month",
       "publicationDateSource": "https://www.usenix.org/conference/usenixsecurity26/presentation/shi-quan",
-      "publicationDateCheckedAt": "2026-11-17"
-    },
-    {
-      "id": "thesis-wang2026d2cntn",
-      "title": "Comparative Analysis of Direct-to-Cell (D2C) and 3GPP Non-Terrestrial Networks (NTN) for Global Connectivity",
-      "url": "https://arxiv.org/abs/2605.05843",
-      "publishedAt": "2026-05-07",
-      "datePrecision": "day",
-      "type": "research",
-      "summary": "Compares Direct-to-Cell and 3GPP NTN in spectrum use, handset compatibility, architecture and standardization.",
-      "source": "arXiv · Preprint",
-      "topic": "D2C and 3GPP NTN",
-      "countryIds": [],
-      "operatorTags": [],
-      "thesisReference": "wang2026d2cntn",
-      "featuredRank": 10,
-      "publicationDateBasis": "arxiv-v1",
-      "publicationDateSource": "https://arxiv.org/abs/2605.05843",
       "publicationDateCheckedAt": "2026-11-17"
     },
     {
