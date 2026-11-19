@@ -1,65 +1,66 @@
-# AI 下载与本地部署提示词
+# AI Setup Prompts
 
-将下面一段复制给有终端／文件访问能力的 AI 编程助手。先替换目标目录等尖括号占位符。私有仓库需要先取得访问权限。
+Copy a prompt below into an AI coding assistant with terminal and file access. Replace placeholders in angle brackets before use. Private repositories require access permission.
 
-## 场景一：从 GitHub 下载并运行
+## 1. Download from GitHub and Run Locally
 
 ```text
-请帮我下载并在本地运行 Starlink D2C Observatory。
+Help me download and run Starlink D2C Observatory locally.
 
-仓库地址：https://github.com/xlllleuw/starlink-d2c-observatory.git
-目标目录：<我希望保存项目的绝对路径>
+Repository: https://github.com/xlllleuw/starlink-d2c-observatory.git
+Destination: <absolute path where I want to save the project>
 
-请实际执行以下工作：
-1. 检查操作系统、Node.js 和 Git 是否可用，阅读目标目录已有的 AGENTS.md（如有）。
-2. 目标目录非空时先检查内容，不覆盖或删除现有文件。克隆指定仓库；没有 Git 时可下载该仓库 ZIP 并解压。只从我给出的仓库获取项目。
-3. 阅读项目 README.md，检查 public/、server/、scripts/local-server.mjs、public/vendor/ 和启动数据是否完整。
-4. 优先使用项目自带的轻量服务：node scripts/local-server.mjs。该路径只依赖 Node 内置模块和已打包的浏览器资源，不要默认 npm install，也不要启动 Sites／Cloudflare 托管流程。
-5. Node 版本应满足 package.json 的 engines。缺少运行环境时，告知具体缺项和官方安装方式；不要擅自修改系统代理、防火墙或执行来源不明的安装脚本。
-6. 默认使用 127.0.0.1:4173。若端口被占用，设置 PORT 为其他可用端口，不终止不明进程，不改成公网监听。
-7. 启动后检查 /api/health 返回 ok:true，/dashboard.html、/js/app.js 和 /vendor/cesium/Cesium.js 可以加载。不要把 HTTP 成功误认为界面所有功能均已验证。
-8. 有浏览器操作能力时，打开页面验证：初始天空图为空；输入坐标后出现实时星点；研究列表可搜索；选择国家显示 TAC，再次选择该国家后所有 TAC 隐藏。不要批量下载地图瓦片。
-9. 星历请求失败时检查缓存和上游连接，保留项目快照并明确说明数据历元。不要伪造最新星历，也不要把此问题误报为全部启动失败。
-10. 最后告诉我项目保存路径、实际启动命令、浏览器地址、已验证项目、未验证事项及停止服务的方法。保持本地服务运行供我使用；如果工具环境无法持久运行，明确告诉我需要手动执行的命令。
+Please carry out these steps:
+1. Check the operating system and whether Node.js and Git are available. Read any applicable AGENTS.md instructions.
+2. Inspect a nonempty destination before proceeding and preserve existing files. Clone the specified repository, or download and extract its ZIP if Git is unavailable.
+3. Read README.md and verify that public/, server/, scripts/local-server.mjs, public/vendor/, and the startup data are present.
+4. Use the bundled lightweight server: node scripts/local-server.mjs. It uses Node.js built-in modules and bundled browser assets, so npm install is unnecessary. This task does not require Sites or Cloudflare deployment.
+5. Check that Node.js meets the engines requirement in package.json. If a prerequisite is missing, identify it and provide official installation instructions. Preserve existing system proxy and firewall settings.
+6. Use 127.0.0.1:4173 by default. If the port is occupied, set PORT to another available port and leave existing processes running. Keep the server accessible only on the local machine.
+7. Verify that /api/health returns ok:true and that /dashboard.html, /js/app.js, and /vendor/cesium/Cesium.js load. Successful HTTP responses alone do not verify every UI feature.
+8. If browser controls are available, check that the sky plot is initially empty, applying coordinates displays live satellite dots, research search works, selecting a country displays its TAC grid, and selecting that country again hides all TAC cells. Use normal interactive map requests only.
+9. If an ephemeris request fails, check the cache and upstream connectivity. Preserve the bundled snapshot and report its orbital epochs. Distinguish a refresh failure from a complete startup failure.
+10. Report the project directory, actual startup command, browser URL, completed checks, unverified features, and how to stop the server. Keep the local server running for me. If your environment cannot keep it running, provide the exact command I should run manually.
 
-本次仅下载并本地运行，不发布代码，不购买域名，不部署网站，不上传私人文件。
+This task is limited to downloading and running the project locally. Publishing code, purchasing a domain, hosted deployment, and uploading private files are outside its scope.
 ```
 
-## 场景二：已下载 ZIP，请 AI 帮我启动
+## 2. Run an Already Downloaded ZIP
 
 ```text
-我已经下载并解压 Starlink D2C Observatory。
-项目位置：<解压后的项目根目录绝对路径>
+I have downloaded and extracted Starlink D2C Observatory.
+Project directory: <absolute path to the extracted project root>
 
-请先阅读 README.md，确认这是包含 public、server、scripts 的根目录。
-检查 Node.js 版本和已打包的 public/vendor 资源，优先执行：
+Read README.md and confirm that this is the root containing public/, server/, and scripts/.
+Check the Node.js version and the bundled public/vendor/ assets, then run:
 node scripts/local-server.mjs
 
-默认访问 http://127.0.0.1:4173/dashboard.html，不要使用本地 /dashboard 路径。
-该启动方式不需要安装完整 npm 依赖，不需要数据库、API Key 或托管账号。
-端口占用时换一个端口，不终止其他未知服务。
-检查 /api/health 和页面资源；有浏览器能力时检查坐标、天空图、国家 TAC 选择与取消。
-最后给我可打开的地址、实际启动命令、如何停止服务，以及任何尚未解决的问题。
-不要上传、发布或重写项目业务逻辑。
+Open http://127.0.0.1:4173/dashboard.html by default; the local /dashboard path is not supported.
+This startup method does not require installing npm dependencies, configuring a database, or obtaining an API key or hosting account.
+If the port is occupied, use another port and leave existing services running.
+Check /api/health and the page assets. If browser controls are available, verify coordinate input, the sky plot, and country TAC selection and deselection.
+Report the working URL, actual startup command, how to stop the server, and any unresolved issues.
+Keep this task limited to local setup, preserving the application logic.
 ```
 
-## 场景三：遇到启动问题
+## 3. Troubleshoot Local Startup
 
 ```text
-请排查 Starlink D2C Observatory 的本地启动问题。
-项目目录：<项目绝对路径>
-报错或现象：<粘贴错误信息；删除密码、令牌、代理凭据等敏感信息>
+Help me troubleshoot Starlink D2C Observatory running locally.
+Project directory: <absolute project path>
+Error or symptoms: <paste the error after removing passwords, tokens, proxy credentials, and other sensitive information>
 
-先阅读 README，按以下顺序定位：
-Node 版本 → 项目目录和资源完整性 → 端口 → /api/health → 静态资源 → 浏览器 WebGL → 地图网络请求 → 服务端星历请求。
-使用 node scripts/local-server.mjs 作为本地运行入口。
-区分“本地服务未启动”“地图在线瓦片失败”和“星历更新失败但快照可用”。
-保留原始数据，不通过删除项目、关闭安全软件或修改全局代理来试错。
-仅做与故障相关的修复，并说明修改文件、验证结果及回退方式。
+Read README.md, then investigate in this order:
+Node.js version -> project directory and asset completeness -> port availability -> /api/health -> static assets -> browser WebGL -> map tile requests -> server-side ephemeris requests.
+
+Use node scripts/local-server.mjs as the local entry point.
+Distinguish between a server that has not started, failed online map tiles, and an ephemeris refresh failure with a usable snapshot.
+Preserve the original data, system security settings, and global proxy configuration.
+Make only changes relevant to the problem. Explain which files changed, how the fix was verified, and how to revert it.
 ```
 
-## 给项目作者的说明
+## Notes for Maintainers
 
-- 发布仓库后，将实际 HTTPS 地址填入分享给用户的提示词即可。
-- 不要让部署助手索取 ChatGPT Sites 仓库凭据；本地运行不需要它们。
-- 未经过浏览器检查的功能应标为未验证，不要让 AI 仅凭启动日志宣称全部正常。
+- Keep the repository HTTPS URL current in prompts shared with users.
+- Local setup does not require ChatGPT Sites repository credentials.
+- Mark features that were not checked in a browser as unverified. Startup logs alone do not demonstrate that all functionality works.
