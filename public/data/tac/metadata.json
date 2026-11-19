@@ -1,0 +1,36 @@
+{
+  "name": "Fibonacci / spherical Voronoi candidate TAC grid",
+  "description": "Candidate TAC grid derived in the thesis; not operator-published real-time tracking area boundaries.",
+  "count": 65536,
+  "latitude_limit_deg": 69.98834166262934,
+  "longitude_phase_deg": 90.08798626780873,
+  "longitude_direction": -1,
+  "golden_angle_deg": 137.50776405003785,
+  "index_offset": 0.5,
+  "earth_radius_km": 6371.0088,
+  "reserved_codes": [
+    0,
+    65534
+  ],
+  "identity_key": "PLMN + TAC",
+  "boundary": "spherical Voronoi, clipped to the model latitude band",
+  "boundary_precision": "Float32 longitude/latitude degrees",
+  "mean_area_km2": 7313.07430296023,
+  "binary": {
+    "file": "grid.bin",
+    "bytes": 4567288,
+    "byte_order": "little-endian",
+    "header": "32 bytes: ASCII TAC1, uint32 version, count, vertex_count, neighbor_count, 3 reserved words",
+    "arrays": [
+      "uint32 boundary_offsets[count+1]",
+      "uint32 neighbor_offsets[count+1]",
+      "float32 lonlat[vertex_count*2]",
+      "uint16 neighbor_ids[neighbor_count]"
+    ]
+  },
+  "validation": {
+    "all_center_roundtrips": true,
+    "all_neighbors_symmetric": true,
+    "latitude_clipped_cells": 288
+  }
+}

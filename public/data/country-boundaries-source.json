@@ -1,0 +1,15 @@
+{
+  "title": "Natural Earth 1:50m Admin 0 – Countries",
+  "sourceUrl": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson",
+  "projectUrl": "https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-admin-0-countries-2/",
+  "license": "Public domain",
+  "licenseUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+  "retrievedAt": "2026-11-17T07:46:51.004087+00:00",
+  "countryCount": 31,
+  "transformations": [
+    "Select the 31 countries in countries.json; preserve their source island components.",
+    "Unwrap and split polygons at the antimeridian; normalize longitudes to [-180,180].",
+    "Keep full country latitude extent; polar clipping is applied only when calculating TAC intersections."
+  ],
+  "resolutionNote": "Natural Earth is a generalized cartographic dataset; islands omitted at 1:50m cannot be inferred from this source."
+}

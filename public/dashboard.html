@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explore live Starlink Direct to Cell satellite positions, TAC grids, country spectrum records and the latest network updates.">
+  <title>Starlink D2C Observatory</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/vendor/cesium/Widgets/widgets.css">
+  <link rel="stylesheet" href="/styles.css">
+  <script>window.CESIUM_BASE_URL='/vendor/cesium/';</script>
+  <script src="/vendor/cesium/Cesium.js" defer></script>
+  <script src="/vendor/satellite.min.js" defer></script>
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="Starlink D2C Observatory home"><span class="brand-mark">◉<i></i></span><span class="brand-wordmark">Starlink D2C<span class="brand-subtitle">Observatory</span></span></a>
+  <nav class="main-nav" aria-label="Main navigation"><button class="nav-item active" data-page="map"><span>◎</span> Live map</button><button class="nav-item" data-page="news"><span>▤</span> Research <i class="tiny-dot"></i></button></nav>
+  <div class="header-right"><span class="live-badge"><i></i> LIVE</span><div class="clock"><b id="utc-clock">--:--:--</b><span>UTC · <span id="utc-date">—</span></span></div><button id="about-button" class="icon-button" aria-label="About the data and models">ⓘ</button></div>
+</header>
+<main id="map-page" class="workspace">
+  <aside class="left-panel">
+    <div class="search-box"><span>⌕</span><input id="global-search" aria-label="Search satellites or TACs" placeholder="Satellite or TAC ID"><kbd>↵</kbd></div>
+    <div class="search-hint">Satellite name or NORAD · TAC 55647</div>
+    <section class="panel-section location-section">
+      <div class="section-title"><h2>Observer location</h2><span class="muted">WGS84</span></div>
+      <form id="location-form" novalidate>
+        <div class="coordinate-fields">
+          <label for="observer-lat">Latitude <span>LAT</span><input id="observer-lat" name="latitude" type="number" inputmode="decimal" step="any" min="-90" max="90" placeholder="Latitude" required aria-label="Observer latitude"></label>
+          <label for="observer-lon">Longitude <span>LON</span><input id="observer-lon" name="longitude" type="number" inputmode="decimal" step="any" min="-180" max="180" placeholder="Longitude" required aria-label="Observer longitude"></label>
+        </div>
+        <button class="action-button coordinate-submit" type="submit">⌖ Apply coordinates</button>
+        <p id="coordinate-error" class="coordinate-error" role="alert" hidden></p>
+      </form>
+      <div class="coordinate-context"><span id="location-name">No location selected</span><button id="location-focus" class="text-button" title="Center the map on the observer">Locate ↗</button></div>
+    </section>
+    <section class="panel-section layers-section">
+      <div class="section-title"><h2>Map layers</h2><span class="muted">LAYERS</span></div>
+      <label class="layer-row"><span class="layer-icon cyan">✦</span><span class="layer-name">DTC satellites<small>Live orbital positions</small></span><input id="layer-satellites" type="checkbox" checked><span class="switch"></span></label>
+      <label class="layer-row"><span class="layer-icon amber">⬡</span><span class="layer-name">TAC grid<small id="tac-scope-label">Research model · Fibonacci / Voronoi</small></span><input id="layer-tac" type="checkbox" checked><span class="switch"></span></label>
+    </section>
+
+    <section class="panel-section sky-section" aria-label="Real-time sky view"><div class="section-title"><h2>Sky view</h2><span class="muted">LIVE</span></div><svg id="sky-view" viewBox="0 0 240 240" role="group" aria-label="Satellite sky plot: north up, east right"></svg><p id="sky-status">Select an observer location</p></section>
+    <div class="panel-footer"><span class="tiny-dot"></span> Orbital positions update live <span class="footer-arrow">↗</span></div>
+  </aside>
+  <section class="map-center" aria-label="Live DTC satellite globe">
+    <div id="globe"></div>
+    <div class="map-top"><div><span class="eyebrow">DIRECT TO CELL</span><h2>Global live view</h2></div><div class="view-toggle" aria-label="Map view"><button id="view-3d" class="active">3D globe</button><button id="view-2d">2D map</button></div></div>
+    <div class="map-stats"><div><small>DTC satellites</small><b id="satellite-total">—</b></div><div><small>Visible here</small><b id="visible-total">—</b></div><div><small>Above 25°</small><b id="high-total">—</b></div></div>
+    <div id="globe-loading" class="globe-loading"><div class="loader-orbit"></div><strong>Connecting to orbital data</strong><span>Loading the globe and latest ephemerides…</span></div>
+    <div class="map-tools"><button id="zoom-in" class="icon-button" aria-label="Zoom in">＋</button><button id="zoom-out" class="icon-button" aria-label="Zoom out">−</button><button id="reset-view" class="icon-button" aria-label="Global view">◎</button></div>
+    <div class="map-bottom"><div class="map-legend"><span><i class="legend-dot cyan-bg"></i>43° satellites</span><span><i class="legend-dot purple-bg"></i>53° satellites</span><span><i class="legend-dot selected-ring"></i>Selected</span><span><i class="legend-line"></i>TAC boundary</span></div><div class="map-caption"><span id="map-mode-label">3D · WGS84</span><span>Drag to rotate · Scroll to zoom</span></div></div>
+    <div id="map-toast" class="map-toast" role="status"></div>
+  </section>
+  <aside class="right-panel">
+    <div class="detail-tabs"><button class="active" data-detail="satellite">Satellite</button><button data-detail="country">Countries &amp; spectrum</button><button data-detail="tac">TAC</button></div>
+    <section id="country-browser" class="panel-section countries-section" hidden>
+      <div class="section-title"><h2>Countries &amp; spectrum</h2><span class="count-chip" id="countries-count">—</span></div>
+      <div class="country-search"><span>⌕</span><input id="country-search" aria-label="Search countries, operators or bands" placeholder="Country, operator or band"></div>
+      <div id="country-list" class="country-list"></div>
+      <div class="country-status-legend" aria-label="Country service status colors"><span><i class="status-dot available"></i>Commercial</span><span><i class="status-dot trial"></i>Testing</span><span><i class="status-dot emergency"></i>Emergency</span></div>
+    </section>
+    <div id="detail-content" class="detail-content"><div class="empty-state">Loading satellite details…</div></div>
+    <section class="candidates-panel"><div class="section-title"><h2>Visible satellites</h2><span class="muted">BY ELEVATION</span></div><div id="candidate-list" class="candidate-list"></div><p class="fineprint">Predicted geometric visibility. Actual service depends on the operator and beam scheduling.</p></section>
+    <div class="source-status"><span id="source-dot" class="tiny-dot"></span><div><b id="orbit-source">Connecting to the ephemeris source</b><small id="orbit-freshness">Checking orbital epochs…</small></div><button id="refresh-orbits" class="icon-button" aria-label="Refresh ephemerides">↻</button></div>
+  </aside>
+</main>
+<main id="news-page" class="news-page" hidden>
+  <div class="news-heading"><div><span class="eyebrow">SELECTED RESEARCH</span><h1>Starlink D2C Research<span>Selected studies on direct-to-cell satellite networks.</span></h1></div><button id="refresh-news" class="outline-button">↻ Refresh research</button></div>
+  <div class="news-toolbar"><input id="news-search" placeholder="Title, topic or publication" aria-label="Search research"></div>
+  <p id="news-status" class="news-status">Fetching the latest updates…</p><div id="news-grid" class="news-grid"></div>
+</main>
+<footer class="statusbar"><span><i class="tiny-dot"></i> <span id="bottom-status">Live orbital propagation</span></span><span>SGP4 · <span id="tac-status">65,536 candidate TAC cells</span></span><button id="data-info-button">Data sources &amp; models ↗</button></footer>
+<dialog id="about-dialog"><button id="close-about" class="dialog-close" aria-label="Close">×</button><span class="eyebrow">ABOUT THIS OBSERVATORY</span><h2>Bring the research onto the globe.</h2><p>Satellite positions are propagated from public TLE data with SGP4 for the current UTC time. The display includes the ephemeris source, epoch and age. Positions update every second; orbital data is cached according to the source's update cycle.</p><p>The TAC layer uses the research's Fibonacci / spherical Voronoi candidate model, spanning approximately 70° north to 70° south. Selecting a country shows every TAC cell intersecting its boundaries, with border cells kept intact. A TAC and PLMN together identify a tracking area; the model is not an operator-published map of live beam boundaries.</p><p>Map imagery is provided by OpenStreetMap contributors. Country boundaries use public-domain Natural Earth data.</p><p>Country spectrum records follow the updated Table 3.5: 31 countries and 34 operator records. Country borders are always visible. Operator cards show service status, paired uplink/downlink frequencies, LTE Band and PLMN. Service colors do not imply that every location can connect at this moment.</p><p>Research is selected from the thesis bibliography.</p><div class="about-links"><a href="/spectrum-review.html">Full evidence review ↗</a><a href="https://celestrak.org/NORAD/elements/" target="_blank" rel="noopener">CelesTrak ↗</a><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap ↗</a><a href="/data/tac/metadata.json" target="_blank">TAC parameters ↗</a></div></dialog>
+</body></html>

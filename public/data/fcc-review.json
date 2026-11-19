@@ -1,0 +1,860 @@
+{
+  "application": "SAT-MOD-20230207-00021",
+  "url": "https://fccprod.servicenowservices.com/icfs?id=ibfs_application_summary&number=SAT-MOD-20230207-00021",
+  "checkedAt": "2026-11-17",
+  "category": "Section 1.65 Notifiction",
+  "totalPleadingRows": 165,
+  "section165Rows": 54,
+  "attachmentAccess": "Blocked by a saved browser permission setting. No Section 1.65 attachment body was verified in this review.",
+  "interpretation": "Dates and titles below are observed FCC directory metadata. A filing title is not evidence of a changed frequency, a domestic licence, or current retail availability. Filing dates retain the directory display without an inferred time zone.",
+  "applicationSummary": {
+    "status": "Current",
+    "lastAction": "Dismissed in Part",
+    "lastActionDate": "2026-10-01",
+    "grantDate": "2025-06-23",
+    "note": "Application-level metadata does not establish the status of every foreign partner or frequency."
+  },
+  "priorityChecks": [
+    {
+      "subject": "New Zealand frequency update",
+      "noticeIds": [
+        "PC0105926"
+      ],
+      "reason": "Read the July 2025 NZ update and the separate December 2025 spectrum-change acceptance before revising the thesis 15 MHz pair."
+    },
+    {
+      "subject": "Panama update",
+      "noticeIds": [
+        "PC0116311",
+        "PC0115176"
+      ],
+      "reason": "The August 2026 update may clarify or replace earlier notification terms; exact MHz remain unverified."
+    },
+    {
+      "subject": "Mongolia and Mobicom",
+      "noticeIds": [
+        "PC0117669",
+        "PC0117420",
+        "PC0117574",
+        "PC0115892"
+      ],
+      "reason": "Keep Mobicom and Gmobile separate. Commercial certification titles do not by themselves confirm a retail launch."
+    },
+    {
+      "subject": "Seychelles",
+      "noticeIds": [
+        "PC0116173"
+      ],
+      "reason": "A commercial certification is indexed, but current domestic DTC retail availability needs independent confirmation."
+    },
+    {
+      "subject": "Spain emergency operation",
+      "noticeIds": [
+        "PC0117755",
+        "PC0115910"
+      ],
+      "reason": "Read dates, scope and expiry; do not classify all of Spain as ordinary commercial service."
+    },
+    {
+      "subject": "New countries outside Table 3.5",
+      "noticeIds": [
+        "PC0117974",
+        "PC0117962",
+        "PC0117324",
+        "PC0115570",
+        "PC0115876"
+      ],
+      "reason": "Greece, Albania, Ecuador, Venezuela and Brazil appear in notification titles. Operators, exact frequencies and service status are not established from titles."
+    },
+    {
+      "subject": "Generic notifications",
+      "noticeIds": [
+        "PC0114541",
+        "PC0114166",
+        "PC0114134",
+        "PC0108047",
+        "PC0108043",
+        "PC0107202",
+        "PC0107152",
+        "PC0107074",
+        "PC0106004",
+        "PC0105716",
+        "PC0105082"
+      ],
+      "reason": "Generic filenames can contain multi-country tables; country-name filtering alone is insufficient."
+    }
+  ],
+  "notices": [
+    {
+      "id": "PC0117974",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-11-12 04:51:27",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Greece Testing Update.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/e2e2908133e09b1009ad38a9ed5c7b9a",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0117962",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-11-11 09:31:19",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Albania Testing Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/8c69c430cfe013107cd9f9c41f851c6f",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0117760",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-10-29 07:32:17",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Ukraine SCS Extension Oct 2026.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/dfb3ecec931497502948991d48373c10",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0117755",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-10-28 11:07:44",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Emergency Service Spain.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/352b4050935cd3502948991d48373c1d",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0117669",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-10-20 09:13:01",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Mobicom Commercial SCS Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/e67466adcf0c9310cd52f1642f851c15",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0117576",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-10-14 11:36:58",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Italy Extension.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/f1db8cbfcff387104470b6770f851cbd",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0117574",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-10-13 22:56:52",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Mobicom FCC Test Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/bfcd556fcf7b0710c070f3542f851c28",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0117434",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-09-30 09:24:02",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Greece Testing Certification.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/be272747cfe387104470b6770f851cff",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0117420",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-09-29 09:44:22",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Mongolia Commercial SCS Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/89222ef6cfafc3104470b6770f851c82",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0117338",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-09-23 09:11:06",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Uganda Commercial SCS Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/d21123bccf270b104470b6770f851ca1",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0117336",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-09-23 08:11:32",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Bangladesh Commercial SCS Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/e6731730cfe30b104470b6770f851cb9",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0117324",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-09-22 17:10:33",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "SCS Notification - Ecuador.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/cf25c8b893a30b10ac9c39bfa8373c79",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0116645",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-08-26 20:22:45",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Costa Rica Commercial SCS Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/df3ee54ccf8f87103bc3f2961f851cc9",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0116311",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-08-07 13:32:00",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "FCC Notification - Panama Update (FILING).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/a10ad671cfeec3905b2cf9642f851cef",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0116173",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-08-06 12:37:14",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Seychelles Commercial Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/89f381a993e28390aca833a058373cf9",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0116092",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-08-03 18:35:47",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "DRC Commercial Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/3d497628932e0f50aca833a058373c92",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115940",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-07-27 13:47:38",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Kazakhstan Commercial SCS Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/5024b956cf164f10ade47d642f851cf2",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115910",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-07-24 17:55:01",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Spain Emergency Certification.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/b6001fd1cf9a0b10ade47d642f851c47",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115892",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-07-23 11:29:50",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Mongolia Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/193e6c49cf168710c2eff2c42f851cc4",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115876",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-07-21 20:33:01",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "SCS Certification - Brazil - REDACTED.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/801794e43b1ac310b46cf98c24e45a54",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115791",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-07-15 09:07:30",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Italy Testing Certification.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/22f04b96938a0f90af3f981d48373c66",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115570",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-06-30 17:59:46",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Venezuela SCS Cert - Updated Frequency Range.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/3baaef61cf7987909d5eb42b1f851c41",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115467",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-06-27 14:45:54",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Venezuela SCS Cert FINAL .pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/187163e4cfb98b509d5eb42b1f851c4c",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115391",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-06-26 03:40:03",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "Philippines Commercial SCS Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/599fbf80cf354b10960df56b1f851c58",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115192",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-06-09 18:02:48",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "Globe Philippines SCS Certification.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/2532ebf69315cf906581381d48373c68",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115178",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-06-05 20:07:48",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "FCC Letter - Uganda.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/7c781b29cf918750905afe152f851c24",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115176",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-06-05 20:03:24",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "FCC Letter - Panama.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/e76757e5cf918750905afe152f851c9c",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0115070",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-06-02 20:01:24",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "FCC Letter - Rwanda.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/2f3abbaccf914350c070f3542f851cc1",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0114928",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-05-18 14:49:47",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "FCC Letter - Bangladesh.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/6b036d33cf34c310ab02f1842f851cda",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0114894",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-05-13 18:08:56",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "FCC Letter - Madagascar.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/55b06c5a93bcc754dec6791d48373c91",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0114838",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-05-06 18:20:17",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "Jamaica Liberty SCS Cert.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/65ff5804cf7807509d5eb42b1f851cde",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0114836",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-05-06 18:10:54",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "Canada SCS Extension May 2026.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/e7ec9040cf7807509d5eb42b1f851c86",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0114674",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-04-22 19:38:28",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "Ukraine SCS Extension April 2026.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/869b20eb97584b1012c3bffce053af4a",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0114541",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-04-10 09:58:05",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Notification.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/c66378ab878cc3909f0cc8460cbb35b2",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0114166",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-03-17 18:33:39",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Notification.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/48b303bf87eb3610e1cc75d9cebb3597",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0114134",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-03-16 15:54:02",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Notification.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/fda599af1b23f21084ab85d6624bcb2b",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0108047",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-02-17 15:40:20",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Notification (Feb 17 2026).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/6adc127a1b0736103c4edb1ee54bcbd7",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0108043",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-02-17 15:33:52",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SpaceX - SCS Notification (Feb 17 2026).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/cfab5a3a1b0736103c4edb1ee54bcb54",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0107202",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-01-28 18:44:08",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Notification.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/d777406c1b7e3e10c0e74223b24bcbe5",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0107152",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-01-23 17:05:09",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Notification (Jan 23 2026).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/e4f006761be2fe10c2ae0d47624bcb67",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0107074",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2026-01-16 15:19:20",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Notification (Jan 16 2025).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/8ca561e41b2ebe50379cec2de54bcbc0",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0106708",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2025-12-04 09:56:50",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Notification (Japan).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/150fb6ee1ba5be1068b6a64ce54bcbe8",
+          "contentReviewed": false
+        },
+        {
+          "title": "SCS Notification (Ukraine).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/2afe76ee1ba5be1068b6a64ce54bcbd9",
+          "contentReviewed": false
+        },
+        {
+          "title": "SCS Notification (Chile).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/ac0fb6ee1ba5be1068b6a64ce54bcb93",
+          "contentReviewed": false
+        },
+        {
+          "title": "SCS Notification (Kazakhstan).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/b7feb6ee1ba5be1068b6a64ce54bcb35",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0106239",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2025-08-28 22:03:42",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "SCS Update (Aug 28 2025).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/921c20d71b6ba61090724000f54bcbfa",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0106004",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2025-08-06 18:29:32",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "SCS Notification (Aug 6 2025).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/1a086e809757a650a59057a00153af7b",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0105926",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2025-07-29 17:50:45",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "FCC Notification - NZ Update.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/795299691b4b2e1084ab85d6624bcb1b",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0105716",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2025-07-10 18:50:13",
+      "filer": "Sharon Zhang",
+      "attachments": [
+        {
+          "title": "SpaceX - SCS Notification (Public).pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/49b9af1f97e266908031b22de053af33",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0105082",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2025-06-05 03:00:00",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Notification.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/5eb39c5b97126a1046e139b0f053af9e",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0104020",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2025-04-11 03:00:00",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "FCC Letter Certifica.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/dd5d089397126a1046e139b0f053af5d",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0103333",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2025-03-11 03:00:00",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "FCC Letter Certifica.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/3e09845f97de2a1046e139b0f053afd8",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0102455",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2025-01-03 03:00:00",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Update (Chile) -.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/bb84c8d797de2a1046e139b0f053af50",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0102218",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2024-12-20 03:00:00",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Update - Dec 20.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/00f2009797de2a1046e139b0f053af8b",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0102230",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2024-12-20 03:00:00",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Update (Japan) -.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/b003409797de2a1046e139b0f053afc7",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0102075",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2024-12-13 03:00:00",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Update - Dec 13.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/bf32045797de2a1046e139b0f053afb9",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    },
+    {
+      "id": "PC0102036",
+      "category": "Section 1.65 Notifiction",
+      "filedAt": "2024-12-11 03:00:00",
+      "filer": "Space Exploration Holdings, LLC",
+      "attachments": [
+        {
+          "title": "SCS Update - Dec 11.pdf",
+          "url": "https://api-prod.fcc.gov/icfs-attachment/exp/api/v1/5c02cc1797de2a1046e139b0f053afa6",
+          "contentReviewed": false
+        }
+      ],
+      "evidenceLevel": "directory_metadata_only"
+    }
+  ]
+}

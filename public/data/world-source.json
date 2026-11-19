@@ -1,0 +1,14 @@
+{
+  "title": "Natural Earth 1:110m Admin 0 – Countries",
+  "source_url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson",
+  "project_url": "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/",
+  "license": "Public domain",
+  "license_url": "https://www.naturalearthdata.com/about/terms-of-use/",
+  "retrieved_at": "2026-11-17",
+  "feature_count": 177,
+  "transformations": [
+    "Retain original Polygon and MultiPolygon geometry.",
+    "Reduce properties to id, ISO_A3, ADM0_A3, name, nameEn and continent.",
+    "Use ADM0_A3 when ISO_A3 is missing or -99; assign this code to the GeoJSON feature id."
+  ]
+}

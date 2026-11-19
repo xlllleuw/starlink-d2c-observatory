@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DTC partnership & spectrum evidence review</title>
+  <meta name="description" content="Dated official-source review of Starlink DTC partners, service availability and spectrum filing records.">
+  <style>
+    :root{color-scheme:dark;font:15px/1.65 system-ui,sans-serif;color:#dce8ef;background:#09111a}*{box-sizing:border-box}body{margin:0}main{max-width:1440px;padding:44px 28px 70px;margin:auto}a{color:#81d7df;text-decoration:none}a:hover{text-decoration:underline}a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #81d7df;outline-offset:3px}header{border-bottom:1px solid #293c49;padding-bottom:30px}.eyebrow{letter-spacing:2px;color:#8ca6ba;font-size:11px;margin-top:30px}h1{font-size:clamp(26px,4vw,42px);line-height:1.18;letter-spacing:-1px;margin:14px 0}h2{font-size:23px;margin:38px 0 14px}h3{font-size:17px}p{max-width:1000px;color:#9eb3c1}.metrics{display:flex;gap:40px;margin:24px 0}.metrics b{font-size:29px;display:block;color:#edf7fc}.metrics span{font-size:12px;color:#92a8b7}.notice{background:#1c242c;border-left:3px solid #deb67c;padding:16px 20px;color:#dec6a5;margin:22px 0}.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}input,select{background:#122330;border:1px solid #365062;border-radius:5px;padding:11px 14px;color:#e8f3f7;font:inherit}input{min-width:250px;flex:1}nav{display:flex;gap:22px;flex-wrap:wrap;font-size:13px}.table-wrap{overflow-x:auto;border:1px solid #293c49;border-radius:8px}table{border-collapse:collapse;width:100%;font-size:13px}th{text-align:left;background:#142431;color:#94b0c1;font-size:11px;letter-spacing:.6px;text-transform:uppercase}th,td{padding:16px;vertical-align:top;border-bottom:1px solid #293c49}tr:last-child td{border-bottom:0}td small{display:block;color:#90a7b7;line-height:1.65;margin-top:6px}td strong{display:block}td.freq{white-space:nowrap;font-variant-numeric:tabular-nums}.badge{display:inline-block;border-radius:4px;border:1px solid #3c5465;padding:2px 7px;font-size:11px;color:#afc1cf;white-space:nowrap}.commercial{color:#94e0c4;border-color:#2e6654;background:#12352d}.trial,.announced{color:#edc388;border-color:#6b5430;background:#302719}.emergency{color:#edaa96;border-color:#795043}details{margin-top:9px;min-width:230px;max-width:520px}summary{cursor:pointer;color:#83d4dd;font-size:12px}details p{font-size:12px;margin:10px 0}.sources{margin:8px 0;padding-left:17px;color:#8da8b9;font-size:12px}.sources li{margin:7px 0}code{font-family:ui-monospace,monospace;color:#adc4d3}.partners{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.partner{border:1px solid #293c49;background:#0e1b26;border-radius:8px;padding:22px}.partner h3{margin:0 0 8px}.partner p{font-size:13px}.muted{font-size:12px;color:#91a6b5}.priority{padding-left:22px;color:#a9bfcc}.priority li{margin:10px 0}#load-error{color:#f2b19c}[hidden]{display:none!important}footer{border-top:1px solid #293c49;margin-top:40px;padding-top:24px;font-size:12px;color:#91a6b5}@media(max-width:700px){main{padding:24px 16px 45px}.metrics{gap:22px}.metrics b{font-size:24px}.partners{grid-template-columns:1fr}th,td{padding:12px}.toolbar{display:block}.toolbar input,.toolbar select{width:100%;margin-bottom:10px}}
+  .spectrum-pairs{margin:0;font-size:12px}.spectrum-pairs th,.spectrum-pairs td{padding:5px 9px;white-space:nowrap}.spectrum-pairs th{font-size:10px;background:transparent}.spectrum-pairs tr:last-child td{border-bottom:0}</style>
+  <script type="module" src="/js/spectrum-review.js"></script>
+</head>
+<body><main>
+  <header><a href="/dashboard.html">← DTC Observatory</a><div class="eyebrow">OFFICIAL-SOURCE REVIEW · <span id="review-date">2026-11-17</span></div>
+    <h1>Partnerships, service & spectrum.</h1>
+    <p>Updated Table 3.5 combines the supplied partnership records, Section 1.65 filings and DTC PLMN sources. Service status describes a dated public offering; it is not a live connection guarantee.</p>
+    <div class="metrics"><div><b id="country-count">31</b><span>countries in the thesis</span></div><div><b id="operator-count">34</b><span>thesis spectrum records</span></div><div><b id="notice-count">54</b><span>Section 1.65 notices</span></div></div>
+    <nav><a href="#records">Reviewed records</a><a href="#partners">Additional partners</a><a href="#fcc">FCC notifications</a><a href="/data/spectrum-review.json">Review JSON ↗</a></nav>
+  </header>
+  <div class="notice">Updated Table 3.5 · 31 countries and 34 operator records. Frequency pairs are aligned by row. Records are ordered by commercial service, testing and emergency deployment.</div>
+  <p id="load-error" hidden></p>
+  <section id="records"><h2>Country & operator records</h2>
+    <p class="muted">Filter by commercial service, testing or emergency deployment. Additional partnership announcements appear below.</p>
+    <div class="toolbar"><input id="review-search" aria-label="Search country, operator or band" placeholder="Search country, operator or band"><select id="review-status" aria-label="Filter service status"><option value="">All service states</option><option value="commercial">Commercial</option><option value="trial">Trial</option><option value="emergency">Emergency</option></select></div>
+    <div id="record-summary" class="muted"></div>
+    <div class="table-wrap"><table><thead><tr><th>Country / operator</th><th>Current service</th><th>Uplink / downlink · MHz</th><th>Band / DTC PLMN</th><th>Evidence & qualifications</th></tr></thead><tbody id="records-body"></tbody></table></div>
+  </section>
+  <section id="partners"><h2>Additional operator findings</h2><div class="partners" id="partner-cards"></div></section>
+  <section id="fcc"><h2>FCC · Section 1.65 Notifiction</h2>
+    <p>The category name is reproduced exactly as displayed by ICFS. All entries below are from <strong>Pleadings & Comments</strong> for <a id="fcc-application" href="https://fccprod.servicenowservices.com/icfs?id=ibfs_application_summary&amp;number=SAT-MOD-20230207-00021" target="_blank" rel="noopener">SAT-MOD-20230207-00021 ↗</a>.</p>
+    <p class="muted">The directory confirms submission dates, filenames and links only. “Commercial” in a filename does not establish an active retail service. Confidential-treatment request documents are excluded from the public attachment list. Generic notifications may contain multi-country tables.</p>
+    <p class="muted">Historical ICFS directory snapshot. This index links to public attachments; record-level sources are listed in the updated table above.</p>
+    <div class="toolbar"><input id="fcc-search" aria-label="Search FCC notifications" placeholder="Search notification title, filing ID or date"></div>
+    <div class="table-wrap"><table><thead><tr><th>Filed · directory date</th><th>Filing ID</th><th>Public attachment</th><th>Evidence level</th></tr></thead><tbody id="fcc-body"></tbody></table></div>
+    <p class="muted"><a href="/data/fcc-review.json">Download the Section 1.65 directory review JSON ↗</a></p>
+  </section>
+  <footer>Reviewed on 17 November 2026. Source publication dates, service dates and review dates are stored separately. Spectrum records do not by themselves prove domestic authorization or current operational use.</footer>
+</main></body></html>
