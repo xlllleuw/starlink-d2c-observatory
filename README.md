@@ -14,6 +14,7 @@ An interactive research platform for exploring Starlink Direct-to-Cell satellite
 | Live&nbsp;Sky&nbsp;View | View satellites above the selected location's horizon. Click a dot for satellite details. The plot stays empty until a location is selected. |
 | TAC&nbsp;Model | Search a TAC ID or select a country to view its model grid. Click the selected country again to hide all TAC cells. This is a research model, not confirmed live beam coverage. |
 | Countries&nbsp;&amp;&nbsp;Spectrum | Search countries, operators, or bands to view service stages, frequency pairs, LTE bands, and PLMNs. |
+| Opensignal&nbsp;D2D | Toggle the observed-grid layer in 2D or 3D. The dated snapshot includes all reported D2D networks; operator identities and live coverage are unavailable. |
 | Research | Browse selected studies by publication date, search by keyword, and open original sources. |
 
 ## License & Credits
@@ -25,3 +26,5 @@ Project code is licensed under the [MIT License](LICENSE). Third-party component
 - **Natural Earth**: public-domain boundaries; see [country boundary sources](public/data/country-boundaries-source.json) and [world sources](public/data/world-source.json).
 - **CelesTrak / public TLE mirror**: dated orbit snapshots with [source metadata](public/data/orbits.json), not guaranteed current data.
 - Linked publications remain the property of their respective rights holders; this project's license does not authorize redistribution of their full texts.
+
+- **Opensignal D2D**: [original map](https://d2d.opensignal.com/) and [binary snapshot](https://d2d.opensignal.com/d2d-data.314191eadb65.bin), dated October 31, 2026. Contains 373,703 geohash-6 observation cells without operator fields. Source data remains subject to Opensignal terms and is not covered by this project’s MIT license.

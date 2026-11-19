@@ -38,7 +38,9 @@
       <div class="section-title"><h2>Map layers</h2><span class="muted">LAYERS</span></div>
       <label class="layer-row"><span class="layer-icon cyan">✦</span><span class="layer-name">DTC satellites<small>Live orbital positions</small></span><input id="layer-satellites" type="checkbox" checked><span class="switch"></span></label>
       <label class="layer-row"><span class="layer-icon amber">⬡</span><span class="layer-name">TAC grid<small id="tac-scope-label">Research model · Fibonacci / Voronoi</small></span><input id="layer-tac" type="checkbox" checked><span class="switch"></span></label>
-    </section>
+    <label class="layer-row"><span class="layer-icon" style="color:#ff6a91">▦</span><span class="layer-name">Opensignal D2D<small id="opensignal-status">Observed grids · October 31, 2026</small></span><input id="layer-opensignal" type="checkbox"><span class="switch"></span></label>
+      <p class="fineprint">D2D observations, not Starlink-only or live coverage. <a href="https://d2d.opensignal.com/" target="_blank" rel="noopener">Opensignal</a></p>
+      </section>
 
     <section class="panel-section sky-section" aria-label="Real-time sky view"><div class="section-title"><h2>Sky view</h2><span class="muted">LIVE</span></div><svg id="sky-view" viewBox="0 0 240 240" role="group" aria-label="Satellite sky plot: north up, east right"></svg><p id="sky-status">Select an observer location</p></section>
     <div class="panel-footer"><span class="tiny-dot"></span> Orbital positions update live <span class="footer-arrow">↗</span></div>

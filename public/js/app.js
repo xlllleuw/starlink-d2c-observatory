@@ -1,3 +1,4 @@
+import { attachD2DLayer } from './opensignal.js';
 import { createSkyView } from './sky.js';
 import { loadTacModel, tacCenter, nearestTac, tacBoundary, tacNeighbors, nearbyTacs, TAC_MODEL, isReservedTac } from './tac.js';
 import { parseObserverCoordinates } from './coordinates.js';
@@ -124,6 +125,7 @@ async function createGlobe() {
   viewer.useBrowserRecommendedResolution=false;viewer.resolutionScale=Math.min(window.devicePixelRatio||1,2)/(window.devicePixelRatio||1);viewer.scene.postProcessStages.fxaa.enabled=false;
   basemaps=createBasemapController(C,viewer,{onError:message=>toast(message),onChange:id=>{state.basemap=id;lastTacFocus='';refreshTac();}});
   await basemaps.set('osm');
+  attachD2DLayer(C,viewer,$('layer-opensignal'),$('opensignal-status'));
   pointCollection=viewer.scene.primitives.add(new C.PointPrimitiveCollection());
   tacOutlines=viewer.scene.primitives.add(new C.PrimitiveCollection());
   countryLayer=new C.CustomDataSource('countries');tacLayer=new C.CustomDataSource('TAC candidate model');viewer.dataSources.add(countryLayer);viewer.dataSources.add(tacLayer);
