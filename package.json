@@ -10,5 +10,5 @@
     "start": "node scripts/local-server.mjs",
     "test": "node scripts/test-coordinates.mjs && node scripts/test-news.mjs && node scripts/test-tac.mjs && node scripts/test-country-tacs.mjs"
   },
-  "license": "UNLICENSED"
+  "license": "MIT"
 }
