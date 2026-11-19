@@ -2,7 +2,7 @@
 
 An interactive research platform for exploring Starlink Direct-to-Cell satellites, sky visibility, TAC models, and partner spectrum data.
 
-[Live Demo](https://starlink-d2c-observatory.xiaoboyu0925.chatgpt.site/dashboard)
+![Starlink D2C Observatory](docs/images/observatory.png)
 
 ## Features & Usage
 
