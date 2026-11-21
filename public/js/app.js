@@ -11,7 +11,7 @@ const safeUrl = value => { try {const u = new URL(value, location.origin); retur
 const shortName = name => name.replace(/\s*\[DTC\]\s*/g, '');
 const statusText = { available:'Commercial',commercial:'Commercial',trial:'Trial',announced:'Announced',coming:'Trial / Coming soon',emergency:'Emergency',unknown:'Unknown',filing:'Filing only' };
 const typeText = { news:'News',research:'Selected research' };
-const state = {observerSelected:false,lat:40.4168,lon:-3.7038,locationName:'Madrid, Spain',selectedSat:null,orbitRequested:false,countryId:'ESP',tacId:null,tacCountryId:null,basemap:'osm',detail:'satellite',mode:'3d',satellites:[],countries:[],additionalPartners:[],news:[],tacReady:false,orbitData:null,countryTacs:{}};
+const state = {observerSelected:false,lat:40.4168,lon:-3.7038,locationName:'Madrid, Spain',selectedSat:null,satelliteSelectionCleared:false,orbitRequested:false,countryId:'ESP',tacId:null,tacCountryId:null,basemap:'osm',detail:'satellite',mode:'3d',satellites:[],countries:[],additionalPartners:[],news:[],tacReady:false,orbitData:null,countryTacs:{}};
 let C, viewer, pointCollection, countryLayer, tacLayer, tacOutlines, basemaps, observerEntity, orbitEntity, satelliteLabel, lastOrbitAt=0, toastTimer, tickCount=0, lastCandidates='', lastTacFocus='', countryFeatures=[];
 const colors = {};
 const renderSky=createSkyView($('sky-view'),$('sky-status'),id=>selectSatellite(id));
@@ -48,12 +48,12 @@ function hideTacGrid() {
   if(viewer)viewer.scene.requestRender();
 }
 function clearObserver() {
-  hideTacGrid();
-  state.observerSelected=false;state.locationName='';
+  state.observerSelected=false;state.locationName='';state.tacId=null;
+  lastTacFocus='';refreshTac();
   if(observerEntity)observerEntity.show=false;
   $('observer-lat').value='';$('observer-lon').value='';
   $('location-name').textContent='No location selected';$('coordinate-error').hidden=true;
-  renderSky([],false,null);updatePositions();
+  renderSky([],false,null);updatePositions();renderDetail();
   if(viewer)viewer.scene.requestRender();
 }
 function setObserver(lat,lon,name,fly=false,countryId=undefined,keepCountryGrid=false) {
@@ -84,8 +84,13 @@ function fitCountry(id) {
 }
 function selectSatellite(id,fly=false) {
   const sat=state.satellites.find(x=>x.noradId===Number(id));if(!sat)return;
+  if(!fly&&state.selectedSat===sat.noradId){
+    state.selectedSat=null;state.satelliteSelectionCleared=true;state.orbitRequested=false;lastOrbitAt=0;
+    if(orbitEntity){viewer.entities.remove(orbitEntity);orbitEntity=null;}
+    satelliteLabel.show=false;updatePositions();return;
+  }
   if(!sat.geo){toast(`${shortName(sat.name)} has no valid position for the current orbital elements.`);return;}
-  state.selectedSat=sat.noradId;state.orbitRequested=true;setDetail('satellite');lastOrbitAt=0;updatePositions();
+  state.satelliteSelectionCleared=false;state.selectedSat=sat.noradId;state.orbitRequested=true;setDetail('satellite');lastOrbitAt=0;updatePositions();
   if(fly&&sat.geo){viewer.scene.completeMorph();viewer.camera.flyTo({destination:C.Cartesian3.fromDegrees(sat.geo.lon,sat.geo.lat,2200000),duration:1.4});}
 }
 function selectTac(id,fly=false,openDetail=true) {
@@ -98,9 +103,9 @@ function selectTac(id,fly=false,openDetail=true) {
 function renderDetail() {
   if(state.detail==='satellite') {
     const sat=state.satellites.find(s=>s.noradId===state.selectedSat);
-    if(!sat||!sat.geo){$('detail-content').innerHTML='<div class="empty-state">Loading valid orbits.<br>Select a satellite once the data is ready.</div>';return;}
+    if(!sat||!sat.geo){$('detail-content').innerHTML='<div class="empty-state">Select a satellite to view its orbit and parameters.</div>';return;}
     const g=sat.geo, hours=ageHours(sat.epoch);
-    $('detail-content').innerHTML=`<div class="object-eyebrow">SATELLITE TELEMETRY</div><div class="object-heading"><h2>${esc(shortName(sat.name))}</h2><span class="sat-icon">✥</span></div><div class="subline"><span class="tag">DIRECT TO CELL</span><span>NORAD ${sat.noradId}</span></div><div class="detail-grid">${metric('Altitude',g.height.toFixed(1),'km')}${metric('Speed',g.speed.toFixed(2),'km/s')}${metric('Local elevation',state.observerSelected?g.elevation.toFixed(1):'—','°',true)}${metric('Slant range',state.observerSelected?g.range.toFixed(0):'—','km')}${metric('Inclination',(sat.satrec.inclo*180/Math.PI).toFixed(2),'°')}${metric('Azimuth',state.observerSelected?g.azimuth.toFixed(1):'—','°')}</div><div class="detail-meta">Subsatellite point ${formatCoords(g.lat,g.lon,2)}<br>Orbital epoch ${utc(sat.epoch)}<br>Element age ${hours.toFixed(1)} h · SGP4 at the current time</div>${hours>72?'<div class="warning-note">These orbital elements are over 72 hours old; position estimates may be less accurate.</div>':''}<button class="action-button" id="focus-satellite">⌖ Locate satellite</button>`;
+    $('detail-content').innerHTML=`<div class="object-eyebrow">SATELLITE TELEMETRY</div><div class="object-heading"><h2>${esc(shortName(sat.name))}</h2><span class="sat-icon">✥</span></div><div class="subline"><span class="tag">DIRECT TO CELL</span><span>NORAD ${sat.noradId}</span></div><div class="detail-grid">${metric('Longitude',Math.abs(g.lon).toFixed(3),g.lon>=0?'° E':'° W')}${metric('Latitude',Math.abs(g.lat).toFixed(3),g.lat>=0?'° N':'° S')}${metric('Altitude',g.height.toFixed(1),'km')}${metric('Local elevation',state.observerSelected?g.elevation.toFixed(1):'—','°',true)}${metric('Slant range',state.observerSelected?g.range.toFixed(0):'—','km')}${metric('Azimuth',state.observerSelected?g.azimuth.toFixed(1):'—','°')}</div>${hours>72?'<div class="warning-note">These orbital elements are over 72 hours old; position estimates may be less accurate.</div>':''}<button class="action-button" id="focus-satellite">⌖ Locate satellite</button>`;
   } else if(state.detail==='country') {
     const c=currentCountry();if(!c){$('detail-content').innerHTML='<div class="empty-state">Select a country from the list.</div>';return;}
     const entry=state.countryTacs[c.id];
@@ -140,11 +145,9 @@ async function createGlobe() {
     if(id?.kind==='satellite'){selectSatellite(id.noradId);return;}
     if(id?.id?.startsWith('tac-')){const tid=Number(id.id.slice(4));const hit=globeCoordinate(click.position);if(hit)setObserver(hit.lat,hit.lon,'Selected location',false,undefined,Boolean(state.tacCountryId));selectTac(tid,false,false);return;}
     if(state.tacCountryId&&$('layer-tac').checked){const hit=globeCoordinate(click.position);const tid=hit?nearestTac(hit.lat,hit.lon):null;if(tid!==null&&state.countryTacs[state.tacCountryId]?.ids.includes(tid)){setObserver(hit.lat,hit.lon,'Selected location',false,undefined,true);selectTac(tid,false,false);return;}}
-    if(id?.id?.startsWith('country-')){const code=id.id.slice(8).split('_')[0];if(state.countries.some(c=>c.id===code)){selectCountry(code);return;}}
     const point=globeCoordinate(click.position);if(point){setObserver(point.lat,point.lon,'Selected location');toast('Observer location and visible satellites updated.');}
   },C.ScreenSpaceEventType.LEFT_CLICK);
   handler.setInputAction(click=>{const point=globeCoordinate(click.position);if(point){setObserver(point.lat,point.lon,'Selected location');}},C.ScreenSpaceEventType.RIGHT_CLICK);
-  viewer.camera.moveEnd.addEventListener(()=>{if(!state.tacReady||state.tacCountryId)return;const center=globeCoordinate(new C.Cartesian2(viewer.canvas.clientWidth/2,viewer.canvas.clientHeight/2));if(center&&viewer.camera.positionCartographic.height<5500000)refreshTac(center);});
   viewer.scene.renderError.addEventListener((scene,error)=>{console.error(error);toast('Map rendering failed. Please reload the page.');});
 }
 function globeCoordinate(position) {const ray=viewer.camera.getPickRay(position);const p=ray&&viewer.scene.globe.pick(ray,viewer.scene);if(!p)return null;const g=C.Cartographic.fromCartesian(p);return {lat:C.Math.toDegrees(g.latitude),lon:C.Math.toDegrees(g.longitude)};}
@@ -187,12 +190,17 @@ function countryAt(lat,lon) {
 }
 function highlightCountries() {if(!countryLayer)return;countryLayer.show=true;for(const e of countryLayer.entities.values){if(!e.polygon)continue;const c=state.countries.find(x=>e.id.startsWith(`country-${x.id}_`));if(c)e.polygon.material=countryColor(c).withAlpha(c.id===state.countryId ? .075 : 0);}viewer.scene.requestRender();}
 
-function refreshTac(focus) {
+function refreshTac() {
   if(!state.tacReady||!tacLayer||!tacOutlines)return;
   tacLayer.show=tacOutlines.show=$('layer-tac').checked;
   viewer.scene.requestRender();
+  const center={lat:state.lat,lon:state.lon},entry=state.countryTacs[state.tacCountryId];
+  if(!entry&&!state.observerSelected){
+    tacLayer.entities.removeAll();tacOutlines.removeAll();lastTacFocus='';
+    $('tac-scope-label').textContent='Research model · Select an observer';
+    return;
+  }
   if(!$('layer-tac').checked)return;
-  const center=focus||{lat:state.lat,lon:state.lon},entry=state.countryTacs[state.tacCountryId];
   const scope=entry?`country:${state.tacCountryId}`:`local:${center.lat.toFixed(1)},${center.lon.toFixed(1)}`;
   const key=`${scope},${state.tacId},${state.basemap}`;
   if(key===lastTacFocus)return;lastTacFocus=key;tacLayer.entities.removeAll();tacOutlines.removeAll();
@@ -211,7 +219,6 @@ function refreshTac(focus) {
   tacLayer.entities.resumeEvents();tacLayer.show=tacOutlines.show=$('layer-tac').checked;
   const country=state.countries.find(c=>c.id===state.tacCountryId);
   $('tac-scope-label').textContent=entry?`Full country · ${entry.count.toLocaleString('en-US')} cells`:'Research model · Local grid';
-  $('tac-status').textContent=entry?`${country?.name} · ${entry.count.toLocaleString('en-US')} TAC cells`:'65,536 candidate TAC cells';
   viewer.scene.requestRender();
 }
 
@@ -247,8 +254,8 @@ function updatePositions() {
   if(!state.observerSelected)visible.length=0;
   visible.sort((a,b)=>b.geo.elevation-a.geo.elevation);
   if(state.selectedSat&&!state.satellites.find(s=>s.noradId===state.selectedSat)?.geo){state.selectedSat=null;lastOrbitAt=0;if(orbitEntity){viewer.entities.remove(orbitEntity);orbitEntity=null;}satelliteLabel.show=false;}
-  if(!state.selectedSat&&visible.length)state.selectedSat=visible[0].noradId;
-  if(!state.selectedSat)state.selectedSat=state.satellites.find(s=>s.geo)?.noradId;
+  if(!state.satelliteSelectionCleared&&!state.selectedSat&&visible.length)state.selectedSat=visible[0].noradId;
+  if(!state.satelliteSelectionCleared&&!state.selectedSat)state.selectedSat=state.satellites.find(s=>s.geo)?.noradId;
   renderSky(state.satellites,state.observerSelected,state.selectedSat);
   $('visible-total').textContent=state.observerSelected?visible.length:'—';$('high-total').textContent=state.observerSelected?visible.filter(s=>s.geo.elevation>=25).length:'—';
   $('bottom-status').textContent=`Live orbit propagation${invalid?` · ${invalid} without a valid current position`:''}`;
@@ -319,7 +326,6 @@ function setupEvents() {
     if(/^tac\s*\d+$/i.test(query)){state.tacCountryId=null;selectTac(Number(query.replace(/tac\s*/i,'')),true);return;}
     const sat=state.satellites.find(s=>String(s.noradId)===query||shortName(s.name).toLowerCase()===query.toLowerCase()||shortName(s.name).replace('STARLINK-','')===query);
     if(sat){selectSatellite(sat.noradId,true);return;}
-    const country=state.countries.find(c=>[c.name,c.nameEn,c.id].some(n=>n.toLowerCase()===query.toLowerCase()));if(country){selectCountry(country.id);return;}
     if(/^\d+$/.test(query)){state.tacCountryId=null;selectTac(Number(query),true);return;}toast('No match found. Enter a satellite ID or TAC 55647.');
   });
   $('layer-satellites').addEventListener('change',updatePositions);
@@ -330,7 +336,7 @@ function setupEvents() {
   $('reset-view').addEventListener('click',()=>globalView());$('location-focus').addEventListener('click',()=>{if(viewer){viewer.scene.completeMorph();viewer.camera.flyTo({destination:C.Cartesian3.fromDegrees(state.lon,state.lat,120000),duration:1.4});}});
   $('location-form').addEventListener('submit',event=>{event.preventDefault();try{const point=parseObserverCoordinates($('observer-lat').value,$('observer-lon').value);if(!viewer){toast('The map is still loading. Apply the coordinates when it is ready.');return;}setObserver(point.lat,point.lon,'Custom coordinates');viewer.scene.completeMorph();viewer.camera.flyTo({destination:C.Cartesian3.fromDegrees(point.lon,point.lat,120000),duration:1.4});toast(`Observer updated: ${formatCoords(point.lat,point.lon,4)}`);}catch(error){$('coordinate-error').textContent=error.message;$('coordinate-error').hidden=false;}});
   $('refresh-orbits').addEventListener('click',()=>refreshOrbits(true));$('refresh-news').addEventListener('click',()=>refreshNews(true));
-  for(const id of ['about-button','data-info-button'])$(id).addEventListener('click',()=>$('about-dialog').showModal());$('close-about').addEventListener('click',()=>$('about-dialog').close());
+  $('about-button').addEventListener('click',()=>$('about-dialog').showModal());$('close-about').addEventListener('click',()=>$('about-dialog').close());
   $('about-dialog').addEventListener('click',event=>{if(event.target===$('about-dialog')){const r=event.target.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)event.target.close();}});
 }
 function clockTick() {const now=new Date();$('utc-clock').textContent=now.toISOString().slice(11,19);$('utc-date').textContent=now.toISOString().slice(0,10);if(!document.hidden&&tickCount++%1===0)updatePositions();}
@@ -351,7 +357,7 @@ async function init() {
     await createGlobe();state.tacId=nearestTac(state.lat,state.lon);
     const startSnapshot=await json('/data/orbits.json');installOrbits(startSnapshot);$('globe-loading').hidden=true;
     addCountries().catch(e=>{console.warn(e);toast('The country layer could not load. Spectrum records are still available.');});
-    loadTacModel().then(()=>{state.tacReady=true;refreshTac();if(state.detail==='tac')renderDetail();}).catch(e=>{console.warn(e);$('layer-tac').checked=false;$('tac-status').textContent='TAC boundaries unavailable';toast('TAC boundaries could not load. Center lookup is still available.');});
+    loadTacModel().then(()=>{state.tacReady=true;refreshTac();if(state.detail==='tac')renderDetail();}).catch(e=>{console.warn(e);$('layer-tac').checked=false;toast('TAC boundaries could not load. Center lookup is still available.');});
     json('/data/news.json').then(data=>{state.news=data.items;renderNews();}).catch(console.warn);
     refreshOrbits();refreshNews();setInterval(refreshOrbits,7200000);setInterval(refreshNews,900000);
     window.addEventListener('resize',()=>{viewer.resize();viewer.scene.requestRender();});

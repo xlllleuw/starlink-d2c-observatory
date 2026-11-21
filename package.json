@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node scripts/local-server.mjs",
-    "test": "node scripts/test-coordinates.mjs && node scripts/test-news.mjs && node scripts/test-tac.mjs && node scripts/test-country-tacs.mjs && node scripts/test-opensignal.mjs"
+    "test": "node scripts/test-coordinates.mjs && node scripts/test-news.mjs && node scripts/test-tac.mjs && node scripts/test-country-tacs.mjs && node scripts/test-opensignal.mjs && node scripts/test-observer-tac.mjs"
   },
   "license": "MIT"
 }

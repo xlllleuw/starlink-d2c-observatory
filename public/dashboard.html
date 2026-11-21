@@ -38,8 +38,7 @@
       <div class="section-title"><h2>Map layers</h2><span class="muted">LAYERS</span></div>
       <label class="layer-row"><span class="layer-icon cyan">✦</span><span class="layer-name">DTC satellites<small>Live orbital positions</small></span><input id="layer-satellites" type="checkbox" checked><span class="switch"></span></label>
       <label class="layer-row"><span class="layer-icon amber">⬡</span><span class="layer-name">TAC grid<small id="tac-scope-label">Research model · Fibonacci / Voronoi</small></span><input id="layer-tac" type="checkbox" checked><span class="switch"></span></label>
-    <label class="layer-row"><span class="layer-icon" style="color:#ff6a91">▦</span><span class="layer-name">Opensignal D2D<small id="opensignal-status">Observed grids · October 31, 2026</small></span><input id="layer-opensignal" type="checkbox"><span class="switch"></span></label>
-      <p class="fineprint">D2D observations, not Starlink-only or live coverage. <a href="https://d2d.opensignal.com/" target="_blank" rel="noopener">Opensignal</a></p>
+    <label class="layer-row"><span class="layer-icon" style="color:#ff6a91">▦</span><span class="layer-name">Opensignal D2D<small id="opensignal-status" hidden></small></span><input id="layer-opensignal" type="checkbox" checked><span class="switch"></span></label>
       </section>
 
     <section class="panel-section sky-section" aria-label="Real-time sky view"><div class="section-title"><h2>Sky view</h2><span class="muted">LIVE</span></div><svg id="sky-view" viewBox="0 0 240 240" role="group" aria-label="Satellite sky plot: north up, east right"></svg><p id="sky-status">Select an observer location</p></section>
@@ -63,7 +62,7 @@
       <div class="country-status-legend" aria-label="Country service status colors"><span><i class="status-dot available"></i>Commercial</span><span><i class="status-dot trial"></i>Testing</span><span><i class="status-dot emergency"></i>Emergency</span></div>
     </section>
     <div id="detail-content" class="detail-content"><div class="empty-state">Loading satellite details…</div></div>
-    <section class="candidates-panel"><div class="section-title"><h2>Visible satellites</h2><span class="muted">BY ELEVATION</span></div><div id="candidate-list" class="candidate-list"></div><p class="fineprint">Predicted geometric visibility. Actual service depends on the operator and beam scheduling.</p></section>
+    <section class="candidates-panel"><div class="section-title"><h2>Visible satellites</h2><span class="muted">BY ELEVATION</span></div><div id="candidate-list" class="candidate-list"></div></section>
     <div class="source-status"><span id="source-dot" class="tiny-dot"></span><div><b id="orbit-source">Connecting to the ephemeris source</b><small id="orbit-freshness">Checking orbital epochs…</small></div><button id="refresh-orbits" class="icon-button" aria-label="Refresh ephemerides">↻</button></div>
   </aside>
 </main>
@@ -72,6 +71,6 @@
   <div class="news-toolbar"><input id="news-search" placeholder="Title, topic or publication" aria-label="Search research"></div>
   <p id="news-status" class="news-status">Fetching the latest updates…</p><div id="news-grid" class="news-grid"></div>
 </main>
-<footer class="statusbar"><span><i class="tiny-dot"></i> <span id="bottom-status">Live orbital propagation</span></span><span>SGP4 · <span id="tac-status">65,536 candidate TAC cells</span></span><button id="data-info-button">Data sources &amp; models ↗</button></footer>
+<footer class="statusbar"><span><i class="tiny-dot"></i> <span id="bottom-status">Live orbital propagation</span></span></footer>
 <dialog id="about-dialog"><button id="close-about" class="dialog-close" aria-label="Close">×</button><span class="eyebrow">ABOUT THIS OBSERVATORY</span><h2>Bring the research onto the globe.</h2><p>Satellite positions are propagated from public TLE data with SGP4 for the current UTC time. The display includes the ephemeris source, epoch and age. Positions update every second; orbital data is cached according to the source's update cycle.</p><p>The TAC layer uses the research's Fibonacci / spherical Voronoi candidate model, spanning approximately 70° north to 70° south. Selecting a country shows every TAC cell intersecting its boundaries, with border cells kept intact. A TAC and PLMN together identify a tracking area; the model is not an operator-published map of live beam boundaries.</p><p>Map imagery is provided by OpenStreetMap contributors. Country boundaries use public-domain Natural Earth data.</p><p>Country spectrum records follow the updated Table 3.5: 31 countries and 34 operator records. Country borders are always visible. Operator cards show service status, paired uplink/downlink frequencies, LTE Band and PLMN. Service colors do not imply that every location can connect at this moment.</p><p>Research is selected from the thesis bibliography.</p><div class="about-links"><a href="/spectrum-review.html">Full evidence review ↗</a><a href="https://celestrak.org/NORAD/elements/" target="_blank" rel="noopener">CelesTrak ↗</a><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap ↗</a><a href="/data/tac/metadata.json" target="_blank">TAC parameters ↗</a></div></dialog>
 </body></html>

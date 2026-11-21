@@ -55,19 +55,21 @@ export function createD2DProvider(C, data) {
 }
 export function attachD2DLayer(C,viewer,checkbox,status) {
   let layer,loading;
-  checkbox.addEventListener('change',async()=>{
+  const syncLayer=async()=>{
     if(layer){layer.show=checkbox.checked;viewer.scene.requestRender();return;}
     if(!checkbox.checked||loading)return;
-    status.textContent='Loading observations…';
+    status.hidden=false;status.textContent='Loading observations…';
     loading=(async()=>{
       const response=await fetch('/data/d2d-data.314191eadb65.bin');
       if(!response.ok)throw new Error(`HTTP ${response.status}`);
       const data=decodeD2D(await response.arrayBuffer());
       layer=viewer.imageryLayers.addImageryProvider(createD2DProvider(C,data));
       layer.show=checkbox.checked;
-      status.textContent=`${data.cells.length.toLocaleString('en-US')} cells · ${data.date}`;
+      status.textContent='';status.hidden=true;
       viewer.scene.requestRender();
     })();
-    try{await loading;}catch(error){console.error(error);checkbox.checked=false;status.textContent='Unable to load · toggle to retry';}finally{loading=null;}
-  });
+    try{await loading;}catch(error){console.error(error);checkbox.checked=false;status.hidden=false;status.textContent='Unable to load · toggle to retry';}finally{loading=null;}
+  };
+  checkbox.addEventListener('change',syncLayer);
+  if(checkbox.checked)void syncLayer();
 }
