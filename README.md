@@ -27,4 +27,4 @@ Project code is licensed under the [MIT License](LICENSE). Third-party component
 - **CelesTrak / public TLE mirror**: dated orbit snapshots with [source metadata](public/data/orbits.json), not guaranteed current data.
 - Linked publications remain the property of their respective rights holders; this project's license does not authorize redistribution of their full texts.
 
-- **Opensignal D2D**: [original map](https://d2d.opensignal.com/) and [binary snapshot](https://d2d.opensignal.com/d2d-data.314191eadb65.bin), dated October 31, 2026. Contains 373,703 geohash-6 observation cells without operator fields. Source data remains subject to Opensignal terms and is not covered by this project’s MIT license.
+- **Opensignal D2D**: [original map](https://d2d.opensignal.com/). Contains 373,703 geohash-6 observation cells without operator fields. Source data remains subject to Opensignal terms and is not covered by this project’s MIT license.
